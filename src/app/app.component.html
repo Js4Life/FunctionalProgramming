@@ -1,4 +1,90 @@
 <h1>{{title}}</h1>
+<h2>Fav :{{myHero.name}}</h2>
+<p>Heroes:</p>
+<ul>
+    <li *ngFor="let hero of heroes">{{hero.name}}</li>
+</ul>
+<p *ngIf="heroes.length > 3" >there are many heroes</p>
+
+<p>Adding 1+2+3: {{1 + 2 + 3}}</p>
+
+<p>My current hero is : {{currentHero.name}}</p>
+
+<h3>{{title}}
+    <img src="{{heroImageUrl}}" style="height: 50px;">
+</h3>
+
+<p>The sum of 1 + 1 is not {{1 + 1 + getVal() }}</p>
+
+{{title}}
+<span [hidden] = "isUnchanged" >changed</span>
+
+<div *ngFor="let hero of heroes">{{hero.name}}</div>
+<div>
+<input (keyup)="0" #heroInput> {{heroInput.value}}
+</div>
+<button (click) = "deleteHero()">Delete Hero</button>
+
+<button (click)="onSave($event)">Save</button>
+
+<button *ngFor="let hero of heroes" (click)="deleteHero(hero)">{{hero.name}}</button>
+
+<form #heroform (ngSubmit)="onSubmit(heroForm)">...</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
