@@ -1,0 +1,14 @@
+button{
+    font-size: 100%;
+    margin:0 2px;
+}
+.special {
+    font-weight: bold;
+    font-size: x-large;
+    font-family: sans-serif;
+    color: green;
+}
+.bad {
+    color: grey;
+}
+.hidden {display: none}

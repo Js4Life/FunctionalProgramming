@@ -1,0 +1,7 @@
+<div>
+    <img src="{{heroImageUrl}}">
+    <span [style.text-decoration]="linethrough">
+        {{prefix}} {{hero?.name}}
+    </span>
+    <button (click)="delete()">delete</button>
+</div>

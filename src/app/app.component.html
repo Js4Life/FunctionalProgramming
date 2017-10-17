@@ -1,3 +1,225 @@
+The null hero's name is {{nullHero && nullHero.name}}
+<div  *ngIf="nullHero">The null hero's name is {{nullHero.name}}</div>
+<div>{{currentHero | json}}</div>
+<div>Birthdate: {{currentHero?.birthdate | date:'longDate'}}</div>
+
+<div>{{title | uppercase | lowercase}}</div>
+
+<div (myClick)="clickMessage = $event">click with my click</div>
+
+<hero-detail [hero]="currentHero" (deleteRequest)="deleteHero($event)"></hero-detail>
+
+<input ref-fax placeholder="fax number">
+<button (click)="callFax(fax.value)">Fax</button>
+
+
+
+<input #phone placeholder="phone number">
+<button (click)="callPhone(phone.value)">Call</button>
+
+
+<p>Pick ur fav hero</p>
+<div>
+    <label *ngFor="let h of heroes" >
+        <input type="radio" name="heroes" [(ngModel)]="currentHero" [value]="h">{{h.name}}
+
+    </label>
+</div>
+<div [ngSwitch]="currentHero.emotion">
+    <happy-hero    *ngSwitchCase="'happy'"    [hero]="currentHero"></happy-hero>
+    <sad-hero      *ngSwitchCase="'sad'"      [hero]="currentHero"></sad-hero>
+    <confused-hero *ngSwitchCase="'confused'" [hero]="currentHero"></confused-hero>
+    <div *ngSwitchCase="'confused'">Are you as confused as {{currentHero.name}}?</div>
+    <unknown-hero  *ngSwitchDefault           [hero]="currentHero"></unknown-hero>
+  </div>
+
+
+<div *ngFor="let hero of heroes;trackBy:trackById">{{hero.id}}</div> 
+<div *ngFor="let hero of heroes;trackBy:trackByHeroes" >{{hero.id}}{{hero.name}}</div>
+
+
+<div *ngFor="let item of heroes;let i=index">{{i+1}} - {{item.name}}</div>
+
+<hero-detail *ngFor="let hero of heroes" [hero]="hero"></hero-detail>
+<div *ngFor="let item of heroes" >{{item.name}}</div>
+
+
+
+
+
+
+
+<div *ngIf="currentHero" >Hello, {{currentHero.name}}</div>
+
+
+
+<div [style.display]="isSpecial ? 'bold' :'none'">Show with style</div>
+<div [style.display]="isSpecial? 'none' : 'block'">Hide with style</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hero-detail [class.hidden]="isSpecial"></hero-detail>
+
+<div class="!isSpecial">show with Class</div>
+<div [class.hidden]="isSpecial">Show with class</div>
+
+<hero-detail *ngIf="isActive" ></hero-detail>
+<input [ngModel]="currentHero.name" (ngModelChange)="setUppercaseName($event)">
+
+<input [ngModel]="currentHero.name" (ngModelChange)="currentHero.name = $event">
+
+
+<input [value]="currentHero.name"  (input)="currentHero.name = $event.target.value">
+
+<input [(ngModel)]="currentHero.name" >
+
+
+<div [ngStyle]="currentStyles">this div is initially italic</div>
+
+<div [ngClass]="currentClass" >THis div is initially saveable,unchanged and special</div>
+
+<div [style.font-size]="isSpecial ? 'x-large':'smaller'">This div is x-larger or smaller</div>
+
+
+
+
+
+
+
+
+
+<div [class.special]="isSpecial">THe class binding is special</div>
+
+<zoom [(zoom)]="fontAnswer" (Zoomchanger)="fontAnswer=$event"></zoom>
+
+
+<my-sizer [(size)]="fontSizePx"></my-sizer>
+
+
+
+
+
+
+<hero-detail (deleteRequest)="deleteHero($event)" [hero]="currentHero"></hero-detail>
+<input [value]="currentHero.name" (input)="currentHero.name = $event.target.value">
+
+
+<div>
+<div (myClick)="clickMessage = $event" clickable>click myClick</div>
+{{clickMessage}}
+</div>
+<button [style.font-size.em]="isSpecial ? 3: 1">Big</button>
+<button [style.font-size.%]="!isSpecial ? 150 : 150">Small</button>
+
+<button [style.color]="isSpecial ? 'red' : 'green'">Red</button>
+<button [style.background-color]="canSave ?'cyan':'grey'">Save</button>
+
+<div class="special" [class.special]="!isSpecial">this is not so spec</div>
+<div [class.special]="isSpecial">The class binding is special</div>
+
+<div class="bad cur1ly special">Bad curly Special</div>
+<div class="bad curly special" [class]="badCurly">Bad Curly</div>
+
+
+<button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+
+
+
+
+
+<table border=1>
+        <!--  expression calculates colspan=2 -->
+        <tr><td [attr.colspan]="1 + 1 + 3">One-Two</td></tr>
+      
+        <!-- ERROR: There is no `colspan` property to set!
+          <tr><td colspan="{{1 + 1}}">Three-Four</td></tr>
+        -->
+      
+        <tr><td>Five</td><td>Six</td></tr>
+      </table>
+
+
+
+
+
+<!-- <tr><td colspan="{{1+1}}">three-four</td></tr> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p><span>"{{evilTitle}}"is the </span><i>interpolated</i>evil title</p>
+<p>"<span [innerHTML]="evilTitle"></span>" is the <i>property bound</i> evil title.</p>
+
+<div [ngClass]= "classes">[ngClass] binding to the classes property</div>
+<hero-detail prefix="currentHero" hero="currentHero"></hero-detail>
+
+<p [innerHTML]="title"></p>
+
+<p><img src="{{heroImageUrl}}">interpolated</p>
+<p><img [src]="heroImageUrl">property binding</p>
+
 <h1>{{title}}</h1>
 <h2>Fav :{{myHero.name}}</h2>
 <p>Heroes:</p>
@@ -31,16 +253,25 @@
 
 <form #heroform (ngSubmit)="onSubmit(heroForm)">...</form>
 
+<div >Mental Model</div>
+<button disabled>save</button>
 
+<hero-detail ></hero-detail>
 
+<button [disabled]="isUnchanged">Save</button>
 
+<input type="text" value="Bob">
 
+<p>Current Hero</p>
+<hero-detail [hero]="currentHero"></hero-detail>
+<p>{{currentHero.name}}</p>
 
+<div [ngClass]="{special:isSpecial}" >I am bold</div>
+<button (click)="saved()">saved</button>
 
+<img [src]="heroImageUrl">
 
-
-
-
+<button [disabled]="isUnchanged">disabled</button>
 
 
 
