@@ -1,0 +1,149 @@
+.parent-container{
+    background: #f8f8fa;
+}
+.upperRow{
+    padding:30px 40px 20px 40px;
+}
+.upperRow > label{
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: 900;
+    color: #475283;
+}
+.secondUpperRow{
+    padding:0px 40px 20px 40px;
+}
+.thirdRow{
+    padding:0px;
+    height:83vh;
+    overflow:hidden;
+}
+.thirdRow:hover{
+    overflow: overlay;
+}
+
+
+.addChecklistBtn{
+    height: 25px;
+    border-radius: 100px;
+    background-color: #5ace3d;
+    box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.12);
+    color:white;
+    padding:3px 20px 5px;
+    margin-top:4px;
+}
+
+
+
+
+.searchChecklistBtn{
+    height: 35px;
+    border-radius: 100px;
+    border: solid 1px #cacfde;
+    width:300px;
+    margin:0px;
+}
+.searchChecklistBtn .searchInputStyle{
+    font-size: 12px;
+    text-align: left;
+    color: #72778f;
+    width:100%;
+
+    border:none;
+    background: transparent;
+    position:relative;
+    padding: 6px 15px 6px 0px;
+    box-shadow:none;
+}
+.searchChecklistBtn .searchInputStyle:focus{
+    box-shadow:none;
+}
+.searchChecklistBtn .addonStyle{
+    background: transparent;
+    border:none;
+    padding-left:47px;
+}
+
+
+.searchChecklistFocus{
+    height: 35px;
+    border-radius: 100px;
+    border: solid 1px #72778f;
+    width:300px;
+    margin:0px;
+}
+.searchChecklistFocus .searchInputStyle{
+    font-size: 12px;
+    text-align: left;
+    color: #475283;
+    width:100%;
+
+    border:none;
+    background: transparent;
+    position:relative;
+    padding: 6px 15px 6px 0px;
+    box-shadow:none;
+}
+.searchChecklistFocus .searchInputStyle:focus{
+    box-shadow:none;
+}
+.searchChecklistFocus .addonStyle{
+    background: transparent;
+    border:none;
+    padding-left:15px;
+}
+
+
+
+
+.rowStyling{
+    padding: 16px 40px 15px 40px;
+    position: relative;
+}
+.rowStyling:hover{
+    background-color: rgba(225, 228, 245, 0.5);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+.rowStyling .checklistName{
+    font-family: Lato;
+    font-size: 16px;
+    text-align: left;
+    color: #21294d;
+    margin: 0px;
+}
+.rowStyling .contextNames, .rowStyling .regulations, .rowStyling .collaborators {
+    font-family: Lato;
+    font-size: 12px;
+    text-align: left;
+    color: #72778f;
+    margin:5px 0px;
+    width: 90%;
+}
+
+
+.createdStyle > p, .modifiedStyle > p{
+    font-family: Lato;
+    font-size: 12px;
+    text-align: left;
+    color: #72778f;
+    margin:5px 0px;
+}
+.badge{
+    vertical-align: top;
+    margin: 4px 10px;
+    font-family: Lato;
+    font-size: 12px;
+    text-align: left;
+    color:white;
+    font-weight: 100;
+    padding: 3px 10px;
+}
+.impl_ready{
+    background: #0eaed2;
+}
+.impl_progress{
+    background: #eaaa34;
+}
+.impl_complete{
+    background: #8bd418;
+}

@@ -1,0 +1,47 @@
+
+<div class="container-fluid bgcl">
+    <div class="row height-26vh">
+    </div>
+    <div class="row height-40vh">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+             <div class="logInDiv left-mar" *ngIf="showLogInDiv">
+                <p class="parabolelogo">Parabole</p>
+                <form #logInForm = "ngForm">
+                    <input type="text" placeholder = "Username" [(ngModel)]="loginForm.name" class="UserNameStl" id="userName" name="userName">
+                    <input type="password" placeholder="Password" [(ngModel)]="loginForm.password" class="passwordStl" id="password" name="password">
+                    <button class="logInButton" (click)="login()"><label class="Log-In">Log In</label></button>
+                </form>
+                <br/>
+                <label style="padding-left:52px"> <font color="red"> {{errorMessage}} </font> </label>
+                <p class="Forgot-your-password" (click)="forgetPassword()">Forgot your password</p>
+            </div>
+            <div class="logInDiv left-mar" *ngIf="showForgetPasswordDiv">
+                <p class="Reset-password">Reset password</p>
+                <label class="Enter-the-email-addr">Enter the email address associated with<br>
+                     your account. We will email you a link to<br>
+                      reset your password</label>
+                <input type="text" placeholder="Enter email address" class="passwordStl">
+                <button class="logInButton" (click)="sendResetPasswordLink()"><label class="Send-reset-password">Send reset password link</label></button>
+                <p class="Back-to-Log-In" (click)="backToLogIn()">Back to Log In</p>
+            </div>
+            <div class="logInDiv left-mar" *ngIf="showResetLinkDiv">
+                <p class="Reset-password">Reset password</p>
+                <label class="Enter-the-email-addr">We have emailed you a link to reset your<br>
+                    password. Please use it to create a new<br>
+                     password</label>
+                <button class="logInButton" (click)="returnToLogIn()"><label class="Send-reset-password">Return to Log In</label></button>
+            </div> 
+            <div class="logInDiv left-mar" *ngIf="showResetPasswordDiv">
+                <p class="Reset-password">Reset password</p>
+                <p class="Set-a-new-password">Set a new password</p>
+                <input type="password" placeholder="New Password" class="passwordStl">
+                <input type="password" placeholder="re-enter new Password" class="passwordStl">
+                <button class="logInButton" (click)="UpdatePassword()"><label class="Send-reset-password">Update password</label></button>
+            </div>    
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row height-34vh">
+      </div>
+  </div>

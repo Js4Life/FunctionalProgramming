@@ -1,0 +1,41 @@
+<div *ngIf="checklist" class="row noMargin maxRowHeight parent">
+  <div class="row noMargin headerRow">
+    <div class="col-md-9 noPadding">
+      <img src="../../assets/images/down-arrow-black.png" class="back-arrow inline" (click)="gotoPrevious()"/>
+      <span class="ellipsis checkListNumber inline">{{checklist.name}}</span>
+    </div>
+    <div class="col-md-3 noPadding">
+      <!--<button id="preview" type="button" class="btn previewBtn pull-right">Preview</button>-->
+    </div>
+  </div>
+  <div class="row noMargin tabBar">
+    <div class="col-md-10 noPadding">
+        <button id="{{step.id}}" *ngFor="let step of requirementsList;let i=index;let first=first" type="button" class="btn tabbedBtns inline" [ngClass]="{'activeTab':first, 'inactiveTab':!first}" (click)="onTabClick(i,$event)"><span>{{step.id}}</span></button>
+    </div>
+    <div  class="col-md-2 noPadding">
+      <span class="grey link addBtn pull-right" (click)="addRequirement(requirementsList.length)"> + Add</span>
+    </div>
+  </div>
+  <div class="row noMargin tabContainer">
+
+      <div class="col-md-8 noPadding contentPanel" >
+        <div class="requirementsPanel">
+          <p class="inline editableTitle" contentEditable=true [textContent]="requirementsList[currentReqIdx].title" (input)="requirementsList[currentReqIdx].title=$event.target.textContent" data-text="Enter a title "></p>
+          <p class="inline editableContent" contentEditable=true [textContent]="requirementsList[currentReqIdx].text" (input)="requirementsList[currentReqIdx].text=$event.target.textContent" data-text="Start typing the requirement here"></p>
+          <hr *ngIf="last" class="contentDivider"/>
+        </div>
+        <div class="implementation">
+          <p class="referenceHeading">Implementation steps</p>
+          <p class="inline editableContent" contentEditable=true [textContent]="requirementsList[currentReqIdx].implementation" (input)="requirementsList[currentReqIdx].text=$event.target.textContent" data-text="Start typing the implementation steps here"></p>
+        </div>
+        <div class="implementation">
+          <div class="btn openAsAnalysisBtn">Open in analysis view</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 noPadding contentPanel" >
+        <p class="topContextsHeading">Top contexts</p>
+        <p class="topContextContent ellipsis">{{checklist.primaryAnalysis.contextNames}}</p>
+      </div>
+  </div>
+</div>
