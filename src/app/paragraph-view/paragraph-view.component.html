@@ -1,0 +1,33 @@
+
+
+<div class="row noMargin noPadding innerColHeight">
+  <div class="col-md-8 noPadding noMargin maxHeight">
+    <div class="row noMargin paraHeadingContainer">
+      <div class="col-sm-8 noPadding pageHeading">
+        <p>{{docType}} DOCUMENT &nbsp;&nbsp;<span>PAGE {{para.startPage}}</span></p>
+        <h5>{{para.name}}</h5>
+      </div>
+    </div>
+    <div class="row noMargin paraContainer">
+      <p [innerHTML]="para.paraContent"></p>
+      <br/>
+      <h4 *ngIf="relPara">Related Paragraph : {{relPara.name}}</h4>
+      <p *ngIf="relPara" class="padding25">{{relPara.paraContent}}</p>
+    </div>
+  </div>
+
+  <div *ngIf="para" class="col-sm-4 noPadding noMargin maxHeight">
+        <div class="listContainer maxHeight">
+            <div class="items" *ngFor="let list of para.contextDistribution" (click)="onContextClick(list,$event)">
+              <div class="contextDetails"  [ngClass]="{'itemActive':list.isSelected,'itemInactive':!list.isSelected}">
+                <p><label class="ellipsis">{{list.contextName}}</label> &nbsp;<span>{{list.value}}</span></p>
+                <div class="progress">
+                  <div class="progress-bar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ 'width':list.value,'background-color':list.color }">
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+  </div>
+
+</div>

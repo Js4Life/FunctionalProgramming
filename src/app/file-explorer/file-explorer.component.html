@@ -1,0 +1,159 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+</div>
+<div class="homeBackground">
+    
+    <!--<div class=" maxHeight">-->
+
+        <div class="row noMargin">
+            <div class="hierarchyPanel grey">
+                <div *ngFor="let data of hierarchy;let last=last;let idx=index" class="hierarchyItem inline">
+                    <img class="folderOrFileImgStl" src="../../assets/images/folder-small.png" *ngIf="!data.folderID">
+                    <img src="../../assets/images/group-12.png" *ngIf="data.folderID">    
+                    <label class="data_nameStl" (click)="navigateHierarchy(data.id,data)">{{data.name}} </label>
+                    <img *ngIf="!last" src="../../assets/images/down-arrow-black.png" class="right_arrow">
+                </div>
+                <div class="pull-right inline folderOptions" (click)="onNewFolderClick()">
+                    <img class="uploadAndNewFolder_fileImgStl" src="../../assets/images/new_folder.png">    
+                    <label class="uploadAndNewFolder_labelStl">New Folder</label>
+                </div>
+                <div class=" pull-right inline upload-btn-wrapper">
+                    <div class="folderOptions">
+                        <img class="uploadAndNewFolder_fileImgStl" src="../../assets/images/upload_files.png">    
+                        <label class="uploadAndNewFolder_labelStl">Upload Files</label>
+                    </div>
+                    <input type="file" multiple (change)="updateUploadUrl($event)"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="row noMargin middleRow">
+
+
+            <div class="col-md-3 fileList noPadding maxHeight">
+                <p class="domainName ellipsis">
+                    <img src="../../assets/images/folder-small@2x.png" style="padding-bottom:7px;" (click)="navigateHierarchy(lastDomain.parentFolderId)">
+                    <label style="padding-left:10px;">{{lastDomain.name}}</label>
+                </p>
+
+                <div *ngIf="newFolder" class="input-group newFolderInput">
+                    <span class="input-addon"><img src="../../assets/images/folder.png"></span>
+                    <input type="text" placeholder="Enter folder name" [(ngModel)]="newFolderName" (blur)="addNewFolder()">
+                </div>
+                
+                <!--<input *ngIf="newFolder" type="text" placeholder="Enter folder name" class="newFolderInput" [(ngModel)]="newFolderName" (blur)="addNewFolder()"/>-->
+                
+                <list [data]="drilldownData" (change)="fileChangeDetector($event)"></list>
+
+                
+                <div *ngIf="selectedFilesForAnalysis.length>0" class="selectedfilesDetails Relative" (click)="selectAddedFiles($event)" >
+                    <span class="inline">{{selectedFilesForAnalysis.length}} File(s)</span>
+                    <span class="inline ellipsis"><span *ngFor="let con of selectedContexts;let last=last">{{con.contextName}}<span *ngIf="!last">, </span></span></span>
+                    <img *ngIf="!last" src="../../assets/images/down-arrow-white.png" class="right_arrow_white inline pull-right">
+                    
+                    <div class="fileHoverDiv">
+                        <p>{{selectedFilesForAnalysis.length}} File(s):Ready To Analyze</p>
+                        <div *ngFor="let files of selectedFilesForAnalysis">
+                            <label class="comparedFileNames ellipsis">{{files.name}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="!drilldownData.folderList && !drilldownData.documentList" class="col-md-9  maxHeight">
+                <div class="emptyFolderMsg">
+                    <img class="NoFileUploaded" src="../../assets/images/empty-folder.png"/><br/>
+                    <label class="folderEmpty">This folder is empty.</label>
+                    <!--<div class="upload-btn-wrapper">
+                        <div class="uploadFromComputer">
+                            <img class="uploadAndNewFolder_fileImgStl" src="../../assets/images/upload_files.png">    
+                            <label class="uploadAndNewFolder_labelStl">Upload from computer</label>
+                        </div>
+                        <input type="file" name="files" (change)="updateUploadUrl($event)"/>
+                    </div>-->
+                </div>
+            </div>
+
+            <div *ngIf="!showDocumentDetails" class="col-md-9 emptyMsg maxHeight">
+                <img class="NoFileSelected" src="../../assets/images/no-file-selected.png"/>
+                <p class="Welcome">Select a document to preview</p>
+            </div>
+
+
+            <div *ngIf="showDocumentDetails" class="col-md-5 documentPanel maxHeight">
+                <div class="pdfContainer maxHeight">
+                    <div class="modal fade modalStyle" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body" style="text-align:left">
+                                    <p class="delete_fileStyle">Delete this file?</p>
+                                    <p class="delNoteStyle">deleted files cannot be recovered</p>
+                                    <label class="delBtnStyle">Delete</label>
+                                    <label data-dismiss="modal" class="cancelbutton" (click)="showMoveDelChildDiv()">cancel</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="iframeStyle1">
+                        <img class="iframeImg1" src="{{pageImg}}"/>
+                    </div>
+                    <div class="navigationBtns">
+                        <i [ngClass]="{'disabled':pageNo==1}" class="fa fa-caret-left fa-lg" (click)="pdfPageNavigate('prev')"></i>
+                        <label>Page {{pageNumber}} of {{currentFile.numPages}}</label>
+                        <i [ngClass]="{'disabled':pageNo==currentFile.numPages}" class="fa fa-caret-right fa-lg" (click)="pdfPageNavigate('next')"></i>
+                    </div>  
+                </div>
+
+                <div class="documentName">
+                    <span *ngIf="currentFile.name" class="ellipsis inline">{{currentFile.name}}</span>
+                    <div *ngIf="!currentFileAdded" class="inline Relative pull-right"> <img class="move_deleteParent" src="../../assets/images/hover.png" (click)="ismovedeldivclicked=!ismovedeldivclicked"> 
+                        <div *ngIf="ismovedeldivclicked" class="movedelchild downArrowHead">
+                             <div><img class="moveImgStyle" src="../../assets/images/m-ove.png">Move</div>
+                             <div data-toggle="modal" data-target="#myModal"><img class="moveImgStyle" src="../../assets/images/delete.png">Delete</div>
+                        </div>
+                    </div>
+                </div>     
+                
+                <p class="documentMeta">{{currentFile.numPages}} PAGES  |  UPLOADED ON JUL 17, 2015</p>
+                <p *ngIf="fromAddedFiles" class="selectedFilesMeta">
+                    <img src="../../assets/HomeImages/down-arrow-black.png" (click)="navigateToAddedFiles('prev')" class="pageNavigateBackBtn"> &nbsp;&nbsp;&nbsp;&nbsp;
+                    File {{selectedFileIdx+1}}/{{selectedFilesForAnalysis.length}}&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img src="../../assets/images/down-arrow-black.png" (click)="navigateToAddedFiles('next')" class="pageNavigateNextBtn"> 
+                </p>
+
+                <div *ngIf="!fromAddedFiles" class="footerBtnWrapper">
+                    <div *ngIf="currentFileAdded" class="btn WhiteFooterBtn" (click)="removeFile(currentFile)">Remove</div>
+                    <div  *ngIf="!currentFileAdded">
+                        <div class="btn WhiteFooterBtn" (click)="addFile(currentFile)">Add to compare</div>
+                        <div class="btn footerBtn" (click)="doneSelection()">Start analysis</div>
+                    </div>
+                </div>
+                <div *ngIf="fromAddedFiles" class="footerBtnWrapper">
+                    <div class="btn footerBtn" (click)="doneSelection()">Start analysis</div>
+                    <div class="btn WhiteFooterBtn" (click)="removeFile(currentFile)">Remove this file</div>
+                    <div class="btn WhiteFooterBtn" (click)="removeAllFile()">Remove all files</div>
+                </div>
+            </div>
+
+
+            <div  *ngIf="showDocumentDetails" class="col-md-4 noPadding maxHeight">
+                <!--<span class="hint--left hint--medium maxHeight" aria-label="select context(s) by which to analyze this document">-->
+                    <div class="contextContainer maxHeight">
+                        <div class="labelStyle">
+                            <label class="rightPanelBtnActive contextsBtns" (click)="onRightOptClick('contexts',$event)">Contexts</label>
+                            <label class="rightPanelBtnInactive contextsBtns" (click)="onRightOptClick('glossary',$event)">Glossary</label>
+                        </div>
+                        <hr class="noMargin">
+                        <div *ngIf="showContexts" class="innerContextCont maxHeight">
+                            <contexts [lists]="allContextsByDoc" [isOverlay]="false" (change)="contextChange($event)"></contexts>
+                        </div>
+                        <div *ngIf="!showContexts" class="glossaryCont maxHeight">
+                            <glossary [lists]="currentFile.glossaryList" (change)="glossaryChange($event)"></glossary>
+                        </div>
+                    </div>
+                <!--</span>-->
+            </div>
+        </div>
+    <!--</div>-->
+</div>

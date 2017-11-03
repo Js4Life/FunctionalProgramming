@@ -1,0 +1,104 @@
+<div *ngIf="checklist" class="row noMargin maxRowHeight">
+  <div class="row noMargin headerRow">
+    <div class="col-md-9 noPadding inline">
+      <img src="../../assets/images/back-arrow-white.svg" class="back-arrow-white inline" (click)="gotoPrevious()"/>
+      <span class="ellipsis checkListName inline">{{checklist.name}}</span>
+      <span *ngIf="checklist.itemStatus=='NEW'" class="badge inline">New</span>
+      <span *ngIf="checklist.status==1" class="badge impl_ready inline">Ready to implement</span>
+      <span *ngIf="checklist.itemStatus=='INPROGRESS'" class="badge impl_progress inline">Implementation in progress</span>
+      <span *ngIf="checklist.itemStatus=='COMPLETE'" class="badge impl_complete inline">Implementation complete</span>
+      <div *ngIf="unsavedmsg" class="btn UnSavedMsgStl pull-right">{{unsavedmsg}}</div>
+      <div *ngIf="savedmsg" class="btn SavedMsgStl pull-right">{{savedmsg}}</div>
+    </div>
+    <div class="col-md-3">
+
+      <div *ngFor="let user of checklist.assignedUsers" class="userThumbnails" class="userThumbnails inline pull-right">
+        {{getInitial(user.name)}}
+        <!--{{user.name.charAt(0)}}-->
+      </div>
+      <!--<button id="preview" type="button" class="btn previewBtn pull-right">Preview</button>-->
+    </div>
+  </div>
+
+  <div class="row noMargin bodyContainer">
+
+      <div class="row noMargin tabBar">
+        <div class="col-md-10 noPadding">
+            <div *ngFor="let step of checklistItemList;let i=index;let first=first" type="button" class="btn tabbedBtns inline" [ngClass]="{'activeTab':first, 'inactiveTab':!first}" (click)="onTabClick(i,$event)">
+              <span>Requirement {{i+1}}</span><br/>
+              <label *ngIf="!step.creator">You <span>+Assign</span></label>
+              <label *ngIf="step.creator && step.creator.name">{{step.creator.name}}</label>
+            </div>
+        </div>
+        <div  class="col-md-2 noPadding">
+          <span class="addBtn pull-right" (click)="addRequirement(checklistItemList.length)"> + Add</span>
+        </div>
+      </div>
+      <div class="row noMargin tabContainer">
+
+          <div class="col-md-9 contentPanel" >
+            <div class="requirementsPanel">
+              <div class="row noMargin">
+                <div class="col-md-6 noPadding">
+                  <p class="inline editableTitle" contentEditable=true [textContent]="checklistItemList[currentReqIdx].name" (input)="checklistItemList[currentReqIdx].name=$event.target.textContent" data-text="Enter a title "></p>
+                </div>
+                <div class="col-md-6 noPadding">
+                      <li class="dropdownPanelZone relative inline">
+                        <div class="selectStyle" (click)="statusListOpen=true">
+                          <p *ngIf="checklistItemList[currentReqIdx].itemStatus!=''" class="ellipsis inline">{{checklistItemList[currentReqIdx].itemStatus}}</p>
+                          <p *ngIf="checklistItemList[currentReqIdx].itemStatus==''" class="ellipsis inline">{{checklistItemList[currentReqIdx].itemStatus}}</p>
+                          <span class="pull-right inline">
+                            <img src="../../assets/images/down-arrow-black.png" class="down-arrow-white"/>
+                          </span>
+                        </div>
+                        <div  *ngIf="statusListOpen" id="droplist" class="topArrowHead dropPanel absolute">
+                          <p class="crossBtn" (click)="statusListOpen=false"><img src="../../assets/images/cross-checklist.png" class="cross-checklist"/></p>
+                          <div *ngFor="let status of statusList;let i=index" class="list-item" (click)="changeStatus(i,status)">
+                            <label class="ellipsis">{{status}}</label>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="dropdownPanel relative inline pull-right">
+                        <div class="selectStyle" (click)="userListOpen=true">
+                          <p *ngIf="checklistItemList[currentReqIdx].currentAssigneeName" class="ellipsis inline">{{checklistItemList[currentReqIdx].currentAssigneeName}}</p>
+                          <p *ngIf="!checklistItemList[currentReqIdx].currentAssigneeName" class="ellipsis inline">No users assigned</p>
+                          <span class="pull-right inline">
+                            <img src="../../assets/images/down-arrow-black.png" class="down-arrow-white"/>
+                          </span>
+                        </div>
+                        <div *ngIf="userListOpen" id="droplist" class="topArrowHead userDropPanel absolute">
+                          <p class="crossBtn" (click)="userListOpen=false"><img src="../../assets/images/cross-checklist.png" class="cross-checklist"/></p>
+                          <div *ngFor="let user of userList;let i=index" class="list-item" [ngClass]="{'activedropdown':user.isSelected}"  (click)="changeUserAssignment(i,user)">
+                            <div class="checkbox inline"  [ngClass]="{'selectedCheckbox selected':user.isSelected,'deselectedCheckbox default':!user.isSelected}" ></div>
+                            <label class="ellipsis">{{user.name}}</label>
+                          </div>
+                        </div>
+                      </li>
+                </div>
+              
+              </div>
+              
+              <!--<p class="inline editableContent" contentEditable=true [textContent]="checklistItemList[currentReqIdx].requirementDetails" (input)="checklistItemList[currentReqIdx].requirementDetails=$event.target.textContent" data-text="Start typing the requirement here"></p>-->
+              <editor *ngIf="showItem" [data]="checklistItemList[currentReqIdx].requirementDetails" [type]="'requirement'" (change)="saveEmitter($event)"></editor>
+              
+              <hr *ngIf="last" class="contentDivider"/>
+            </div>
+            <div class="implementation">
+              <p class="implementationSteps">Implementation steps</p>
+              <editor [data]="checklistItemList[currentReqIdx].implementationSteps" [type]="'implementation'" (change)="saveEmitter($event)"></editor>
+              
+              <!--<p class="inline editableContent" contentEditable=true [textContent]="checklistItemList[currentReqIdx].implementationSteps" (input)="checklistItemList[currentReqIdx].implementationSteps=$event.target.textContent" data-text="Start typing the implementation steps here"></p>-->
+            </div>
+          </div>
+
+          <div class="col-md-3 contentPanel" >
+            <p class="topContextsHeading">Top contexts</p>
+            <p class="topContextContent ellipsis">{{checklist.primaryAnalysis.contextNames}}</p>
+          </div>
+      </div>
+      <div class="implcontainer">
+        <div class="btn saveBtn" (click)="saveChecklistItem(checklistItemList[currentReqIdx])">Save this item</div>
+        <div class="btn openAsAnalysisBtn" (click)="openInAnalysis(checklistItemList[currentReqIdx])">Open in analysis view</div>
+      </div>
+  </div>
+</div>

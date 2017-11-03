@@ -1,0 +1,70 @@
+<div class="parent-container rowMaxHeight">
+  <div class="row noMargin upperRow">
+    <label class="col-md-9 noPadding">Checklists</label>
+    <div class="col-md-3 noPadding">
+        <div class="input-group searchChecklistBtn pull-right">
+            <span class="input-group-addon addonStyle">
+              <img src="../../assets/images/search.png" class="search"/>
+            </span>
+            <input type="text" class="form-control searchInputStyle" placeholder="Search by Checklist name" (focus)="searchFocusIn()" (blur)="searchFocusOut()" (keyup)="onSearch($event.target.value)">
+        </div>
+    </div>
+  </div>
+  <div class="row noMargin secondUpperRow">
+      <div class="col-md-8 noPadding">
+        <p>checklist</p>    
+    <!--div class="row noMargin upperRow">
+      <label class="col-md-9 noPadding">Checklists</label>
+      <div class="col-md-3 noPadding">
+          <div class="input-group searchChecklistBtn pull-right">
+              <span class="input-group-addon addonStyle">
+                <img src="../../assets/images/search.png" class="search"/>
+              </span>
+              <input type="text" class="form-control searchInputStyle" placeholder="Search by Checklist name" (focus)="searchFocusIn()" (blur)="searchFocusOut()" (keyup)="onSearch($event.target.value)">
+          </div>
+      </div-->
+    </div>
+    <div class="row noMargin secondUpperRow">
+        <div class="col-md-6 noPadding">
+          <p>checklis</p>    
+        </div>
+        <div class="col-md-2 noPadding">
+          <p>Status</p>    
+        </div>
+        <div class="col-md-2 noPadding">
+          <p>Initiated By</p>    
+         </div>
+        <div class="col-md-2 noPadding">
+          <p>Last modified By</p>    
+        </div>
+    </div>
+    <div class="row noMargin thirdRow">
+      <div class="row noMargin rowStyling" *ngFor="let chk of checklistsTemp" (click)="gotodetails(chk)">
+          <div class="row noMargin border_bottom">
+            <div class="col-md-6 below-padding">
+              <p class="checklistName inline ellipsis" [ngClass]="{'bold':currUser.id==chk.creator.id}">{{chk.name}}</p>
+              <p class="contextNames ellipsis"><b>Contexts:</b> <span > {{chk.primaryAnalysis.contextNames}}</span></p>
+              <p class="regulations ellipsis"><b>Regulations:</b> <span *ngFor="let cn of chk.regulations"> {{cn}},</span></p>
+              <p class="collaborators ellipsis"><b>Collaborators:</b> <span *ngFor="let cn of chk.assignedUsers;let last=last"> {{cn.name}}<span *ngIf="!last">, </span></span></p>
+            </div>
+            <div class="col-md-2 noPadding">
+              <span *ngIf="chk.itemStatus" class="badge inline">{{chk.itemStatus}}</span>
+              <span *ngIf="chk.status==0" class="badge inline">Draft</span>
+              <span *ngIf="chk.status==1" class="badge impl_ready inline">Ready to implement</span>
+              <span *ngIf="chk.status==2" class="badge impl_progress inline">Implementation in progress</span>
+              <span *ngIf="chk.status==3" class="badge impl_complete inline">Implementation complete</span>    
+            </div>
+            <div class="col-md-2 noPadding createdStyle">
+              <!-- <p><b>Created</b></p> -->
+              <p>{{chk.createdDate}}</p>
+              <p>{{chk.creator.name}}</p>
+            </div>
+            <div class="col-md-2 noPadding modifiedStyle">
+              <!-- <p><b>Modified</b></p> -->
+              <p>{{chk.modifiedDate}}</p>
+              <p>{{chk.modifiedBy}}</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
