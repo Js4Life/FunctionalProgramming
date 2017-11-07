@@ -1,0 +1,43 @@
+import { Component, OnInit, Input } from '@angular/core';
+import {environment} from '../../environments/environment'
+import * as io from 'socket.io-client';
+import {Subject} from 'rxjs/Subject';
+ import {Observable} from 'rxjs/Observable';
+
+
+@Component({
+  selector: 'app-loader',
+  templateUrl: './loader.component.html',
+  styleUrls: ['./loader.component.css']
+})
+
+export class LoaderComponent implements OnInit  {
+@Input() loadingData:any;
+// private url :'http://localhost:8082';
+// socket;
+
+messages = [];
+connection;
+message;
+
+getMessages() {
+  let observable = new Observable(observer => {
+    console.log('Entering...');
+    let socket = io(environment.ws_url);
+    socket.on('news', data => {
+       console.log(data);
+       observer.next(data);
+       this.loadingData = data;
+       console.log('print response', this.loadingData);
+      });
+    });
+  return observable;
+}
+
+
+ngOnInit() {
+  this.connection = this.getMessages().subscribe(message => {
+    this.messages.push(message);
+  })
+}
+}

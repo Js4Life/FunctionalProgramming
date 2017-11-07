@@ -1,0 +1,334 @@
+/* File Upload Global Styles */
+
+.PopBox{
+    width: 480px;
+    height: 154px;
+    border-radius: 6px;
+    background-color: #ffffff;
+    box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.12);
+    border: solid 1px #e2e4f5; 
+    margin-left: 500px;
+    margin-top: 150px;
+    /* margin-top:90px; */
+    
+  }
+.filesView {
+    width: 141px;
+    height: 17px;
+    font-family: Lato;
+    font-size: 14px;
+    font-weight: 900;
+    text-align: left;
+    color: #475283;
+    margin-left: 40px;
+    margin-top:22px;
+}
+
+.downArrow {
+    width: 7.6px;
+    height: 3.8px;
+    object-fit: contain;
+    /* border: solid 2px #222b45; */
+    margin-left: 225px;
+    cursor: pointer;
+  }
+
+  .crossChecklist {
+    width: 10px;
+    height: 9px;
+    object-fit: contain;
+    /* transform: rotate(-45deg); */
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+  .pdfName {
+    width: 190px;
+    height: 17px;
+    font-family: Lato;
+    font-size: 14px;
+    text-align: left;
+    color: #72778f;
+    margin-top:22px;
+    margin-left: 40px;
+  }
+
+  .Uploading {
+    width: 419px;
+    height: 65px;
+    /* display: inline; */
+  }
+
+  .progressBar {
+    width: 400px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #f0f1f3;
+    margin-left: 40px;
+  }
+
+  .progressBarContent {
+    width: 30px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #edc149;
+  }
+
+  .status {
+    width: 54px;
+    height: 15px;
+    font-family: Lato;
+    font-size: 12px;
+    text-align: left;
+    color: #72778f;
+    margin-left: 35px;
+    margin-top: 14px;
+  }
+
+  .smallCross {
+    width: 14px;
+    height: 15px;
+    object-fit: contain;
+    margin-left: 270px;
+    margin-top:-3px;
+    position: absolute;
+  }
+
+  .progressBarContent2{
+    width: 50px;
+    height: 6px;
+    border-radius: 6px;
+    background-color: #8096ff;
+  }
+  .progressBarContent3 {
+      width: 190px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: #8096ff;
+    }
+
+    .progressBarContent4 {
+      width: 220px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: #3ddcde;
+    }
+  
+    .progressBarContent5 {
+      width: 260px;
+      height: 6.4px;
+      border-radius: 6px;
+      background-color: #3ddcde;
+    }
+
+    .progressBarContent6{
+      width: 310px;
+      height: 6px;
+      border-radius: 6px;
+      background-color: #91f379;
+    }
+
+    .completeIcon {
+      width: 13px;
+      height: 14px;
+      object-fit: contain;
+    }
+
+    .previewborder {
+      width: 65px;
+      height: 25px;
+      border-radius: 100px;
+      border: solid 1px #cacfde;
+    }
+
+    .previewContent {
+      width: 42px;
+      height: 15px;
+      font-family: Lato;
+      font-size: 12px;
+      text-align: center;
+      color: #72778f;
+      padding: 5px;
+      margin-left: 55px;
+    }
+
+
+    /* Last Popup */
+
+    .LastBox{
+      width: 480px;
+      height: 426px;
+      border-radius: 6px;
+      background-color: #ffffff;
+      box-shadow: 1px 2px 8px 0 rgba(0, 0, 0, 0.12);
+      border: solid 1px #e2e4f5;
+      margin-left: 500px;
+    }
+
+    .analysingBox {
+      width: 796px;
+      /* height: 741px; */
+      background-color: #f8f8fa;
+    }
+
+    .fileNotsupported {
+      width: 422px;
+      height: 42px;
+    }
+    .imageFormat{
+      width: 67px;
+      height: 17px;
+      font-family: Lato;
+      font-size: 14px;
+      text-align: left;
+      color: #72778f;
+      margin-left: 40px;
+      margin-top:22px;
+      
+    }
+
+    .c{
+      width: 796px;
+      height: 741px;
+      background-color: #f8f8fa;
+    }
+
+    .warning {
+      width: 5px;
+      height: 13px;
+      font-family: Lato;
+      font-size: 11px;
+      font-weight: 900;
+      text-align: left;
+      color: #f6908b;
+    }
+    .warnMessage {
+      width: 400px;
+      height: 15px;
+      font-family: Lato;
+      font-size: 12px;
+      text-align: left;
+      color: #72778f;
+    }
+
+    .Oval {
+      width: 14px;
+      height: 14px;
+      border: solid 1px #f6908b;
+      padding: 2px;
+      margin-left: 30px;
+    }
+
+    .cancel {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+    }
+
+    .Cancelled {
+      width: 400px;
+      height: 15px;
+      font-family: Lato;
+      font-size: 12px;
+      text-align: left;
+      color: #72778f;
+      margin-left: 40px;
+    }
+
+    .alertBox {
+      width: 462px;
+      height: 183px;
+      border-radius: 6px;
+      background-color: #ffffff;
+    }
+    .Cancel-uploading {
+      width: 146px;
+      height: 22px;
+      font-family: Lato;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+      color: #475283;
+    }
+
+    /* . {
+      width: 462px;
+      height: 183px;
+      border-radius: 6px;
+      background-color: #ffffff;
+    } */
+
+    .modal-title {
+      width: 146px;
+      height: 22px;
+      font-family: Lato;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: left;
+      color: #475283;
+    }
+  
+    .modal-body {
+      width: 386px;
+      height: 17px;
+      font-family: Lato;
+      font-size: 14px;
+      text-align: left;
+      color: #475283;
+    }
+  
+    btnMargin {
+      margin-left: 50px;
+    }
+    
+    .uploadOK {
+      
+      width: 127px;
+      height: 35px;
+      border-radius: 100px;
+      background-color: #5ace3d;
+      box-shadow: 0 2px 11px 0 rgba(0, 0, 0, 0.12);
+    }
+  
+    .cancelUpload {
+      width: 90px;
+      height: 15px;
+      font-family: Lato;
+      font-size: 12px;
+      text-align: center;
+      color: #72778f;
+    }
+    moveCenter {
+      text-align: center;
+      margin-left: 50px;
+    }
+  
+    .continueText {
+      width: 103px;
+      height: 15px;
+      font-family: Lato;
+      font-size: 12px;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    /* Progress Bar */
+
+    #myProgress {
+      width: 85%;
+      background-color: rgba(221, 221, 221, 0.33);
+      margin-top: 37px;
+      margin-left: 35px;
+    }
+    
+    #myBar {
+      height: 7px;
+      background-color: #edc149;
+      text-align: center;
+      line-height: 30px;
+      color: white;
+    }
+
+    .loader {
+      margin-top:5px;
+    }

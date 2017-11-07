@@ -1,0 +1,184 @@
+
+<div class="PopBox">
+    <div class="filesView">1/1 files ready to view
+        <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+        <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+     </div>
+<div id="myProgress" >
+    <!--  -->
+        <div id="myBar"  [style.width.%]="dataa"></div>
+    </div>
+  <p class="status">Uploading</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="PopBox" id="div1">
+  <div class="filesView">1/1 files ready to view
+     <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+     <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+  </div>
+  <div class="Uploading">
+     <div *ngFor="let message of messages;let myIndex = index" >
+      <span class="pdfName inline">{{message}}</span>
+    </div>  
+
+     <p class="progressBar progressBarContent"><img class="smallCross" src="../assets/images/close.png"  data-toggle="modal" data-target="#myModal"/></p>
+     <p class="status">Uploading</p>
+  </div>
+</div> -->
+
+
+
+
+
+<!-- <div class="PopBox" id="div2">
+  <div class="filesView">1/1 files ready to view
+     <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+     <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+  </div>
+  <div class="Uploading">
+     <p class="pdfName">AmexSalesReport-Q42016.pdf</p>
+     <p class="progressBar progressBarContent2"><img class="smallCross" src="../assets/images/close.png" /></p>
+     <p class="status">Analysing Context</p>
+  </div>
+</div>
+<div class="PopBox" id="div3">
+  <div class="filesView">1/1 files ready to view
+     <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+     <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+  </div>
+  <div class="Uploading">
+     <p class="pdfName">AmexSalesReport-Q42016.pdf</p>
+     <p class="progressBar progressBarContent3"><img class="smallCross" src="../assets/images/close.png" /></p>
+     <p class="status">12 Contexts identified</p>
+  </div>
+</div>
+
+<div class="PopBox"  id="div4">
+  <div class="filesView">1/1 files ready to view
+     <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+     <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+  </div>
+  <div class="Uploading">
+     <p class="pdfName">AmexSalesReport-Q42016.pdf</p>
+     <p class="progressBar progressBarContent4"><img class="smallCross" src="../assets/images/close.png" /></p>
+     <p class="status">Parsing Vocabulary</p>
+  </div>
+</div>
+<div class="PopBox"  id="div5">
+  <div class="filesView">1/1 files ready to view
+     <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+     <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+  </div>
+  <div class="Uploading">
+     <p class="pdfName">AmexSalesReport-Q42016.pdf</p>
+     <p class="progressBar progressBarContent5"><img class="smallCross" src="../assets/images/close.png" /></p>
+     <p class="status">91 Terms Identified</p>
+  </div>
+</div>
+
+<div class="PopBox"  id="div6">
+  <div class="filesView">1/1 files ready to view
+     <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+     <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+  </div>
+  <div class="Uploading">
+     <p class="pdfName">AmexSalesReport-Q42016.pdf<span class="previewContent previewborder">Preview</span></p>
+     <p class="progressBar progressBarContent6"></p>
+     <p class="status"><img class="completeIcon" src="../assets/images/ready-view.png"/> Ready to view</p>
+  </div>
+</div> 
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+ 
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cancel Uploading</h4>
+      </div>
+      <div class="modal-body">
+        <p>You still have file(s) uploading. Are you sure you want to cancel?</p>
+      </div>
+      <br>
+      <div class="moveCenter" style="margin-left:80px;">
+        <button type="button" class="uploadOK btnMargin" data-dismiss="modal"><span class="continueText">Continue Uploading</span></button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="cancelUpload">Cancel Uploading</span></button>
+      </div>
+    <br>
+    </div>
+
+  </div>
+</div> -->
+
+
+<!-- <div class="LastBox"  id="div7">
+  <div class="filesView">1/1 files ready to view
+      <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+      <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+   </div>
+   <div class="Uploading">
+      <p class="pdfName">Filename1.pdf</p>
+      <p class="progressBar progressBarContent"><img class="smallCross" src="../assets/images/close.png" /></p>
+      <p class="status">Uploading</p>
+   </div>
+
+   <div class="analysingBox">
+      <p class="pdfName">Filename2.pdf</p>
+      <p class="progressBar progressBarContent2"><img class="smallCross" src="../assets/images/close.png" /></p>
+      <p class="status">Analysing</p>
+   </div>
+
+   <div class="fileNotsupported">
+      <p class="imageFormat">Image3.jpg</p>
+      <i class="fa fa-exclamation-circle" aria-hidden="true" style="color:red;margin-left:40px;"></i>
+      <span class="warnMessage">This file type is not supported</span>
+   </div>
+   <div class="Uploading">
+      <p class="pdfName">AmexSalesReport-Q42016.pdf<span class="previewContent previewborder">Preview</span></p>
+      <p class="progressBar progressBarContent6"></p>
+      <p class="status"><img class="completeIcon" src="../assets/images/ready-view.png"/> Ready to view</p>
+   </div>
+</div>
+
+
+
+<!-- <div class="LastBox"  id="div8">
+  <div class="filesView">1/1 files ready to view
+      <span><img class="downArrow" src="../assets/images/down-arrow-black.png"/></span>
+      <span><img class="crossChecklist" src="../assets/images/cross-checklist.png"/></span>     
+   </div>
+   <div class="Uploading">
+      <p class="pdfName">Filename1.pdf</p>
+      <p class="progressBar progressBarContent"><img class="smallCross" src="../assets/images/close.png" /></p>
+      <p class="status">Uploading</p>
+   </div>
+
+   <div class="analysingBox">
+      <p class="pdfName">Filename2.pdf</p>
+     <p class="Cancelled"><img class="cancel" src="../assets/images/cancel.png" /> Cancelled</p>
+   </div>
+
+   <div class="fileNotsupported">
+      <p class="imageFormat">Image3.jpg</p>
+
+      <i class="fa fa-exclamation-circle" aria-hidden="true" style="color:red;margin-left:40px;"></i>
+      <span class="warnMessage">This file type is not supported</span>
+   </div>
+   <div class="Uploading">
+      <p class="pdfName">AmexSalesReport-Q42016.pdf<span class="previewContent previewborder">Preview</span></p>
+      <p class="progressBar progressBarContent6"></p>
+      <p class="status"><img class="completeIcon" src="../assets/images/ready-view.png"/> Ready to view</p>
+   </div>
+</div> -->
