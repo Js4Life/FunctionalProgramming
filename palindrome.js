@@ -1,29 +1,24 @@
-var i,j;
-for( i=1;i<=5;i++) 
-{
-    for(j=1;j<=i;j++)
-    {
-    console.log('*');
-  
-    }
-    console.log('<br>');
+function isPalindrome(s) {
+    console.log(s.split("").reverse().join(""))
+    return s = s.split("").reverse().join("") ? true : false;
 }
+console.log(isPalindrome("noon"));
 
 
 
 
-// v = 15;
 
-// function f1() {
-//     "use strict";
-//     var v = "Hi I am a strict mode script";
-//     console.log(v)
+// function palindrome(str) {
+//     var len = str.length;
+//     var loopLength =Math.floor(str.length/2);
+//     for(var i=0; i <loopLength;i++ ) {
+//         if(str[i] !== str[len - 1 - i]) {
+//             return false;
+//         }  
+//         return true;
+//     }
+  
+
 // }
 
-// f1();
-
-
-
-// "use strict";
-
-// v ='Hi I am strict mode script!';
+// palindrome([1,2,1]);
