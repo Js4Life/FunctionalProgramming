@@ -1,0 +1,12 @@
+<!-- <h4>Parent to child @input</h4>
+<app-child [message]="messages"></app-child>
+
+<h1>Child to parent @eventemitter and @output</h1>
+<p>Message: {{messages}}</p>
+<app-child (messageEmitter)="receiveMessage($event)"></app-child>  -->
+
+<p>From child to parent using viewchild and ngafterInit</p>
+<p>view child mssg : {{newmsssg}}</p>
+<app-child></app-child>
+
+<p>{{message}}</p>
