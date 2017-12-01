@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  a: any = 3;
+  passValue: any;
+
+  @Output() change = new EventEmitter<any>();
+
+  emitter(e) {
+    console.log(e);
+    this.passValue = e;
+    this.change.emit(this.passValue);
+  }
 }
