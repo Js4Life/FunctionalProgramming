@@ -1,0 +1,102 @@
+<html>
+    <script>
+
+var person = {
+    first:'raghavendra',
+    second:'gowda',
+    full:function(){
+        return this.first + " " + this.second;
+    }
+}
+
+var myObject = {
+    first:'mary',
+    second:'x-mas'
+}
+
+var x = person.full.apply(myObject);
+var y = person.full.call(myObject)
+
+console.log(x,y);
+
+// var obj = {
+//     data:'Hello world'
+// }
+
+// var displayData = function() {
+//     alert(this.data);
+// }
+// console.log(displayData());
+// console.log(displayData.apply(obj));
+
+// var add = function(num1,num2)        {
+//     return num1 + num2;
+
+// }
+
+// array = [3,4];
+// console.log(add.apply(null,array));
+
+// var obj = {
+//     data: 'Hello world'
+// }
+
+// var func1 = function() {
+//     return obj;
+// }
+// var func2 = function() {
+//     return 'I am a simple type';
+// }
+// var f1 = new func1();
+// var f2 = new func2();
+// console.log(f1,f2);
+
+
+
+
+
+// var cheese = function(type) {
+//     var cheeseType = type;
+//     return cheeseType;
+// }
+// cheddar = new cheese('cheddar');
+// console.log(cheddar);
+
+//     var obj = {
+
+//         value : 200,
+
+//         increment: function() {
+//             console.log(this.value);
+//            // var value = this.value;
+//             console.log(value);
+//             var localValue = this.value;
+//             var innerFunction = function() {
+//                 console.log(localValue)
+//             //    console.log('second',value);
+//             //    alert(value);
+//             }
+           
+//             innerFunction();
+//         }
+//     }
+// obj.increment();
+
+// var val = 1;
+
+// var obj = {
+//     val:2,
+//    value : function(){
+//         alert(val);
+//         var inner = function() {
+//         alert(this.val);
+//         } 
+//      alert(this.val); 
+//          inner();
+//     }
+ 
+// }
+// obj.value();
+
+    </script>
+</html>
